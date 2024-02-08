@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Worth the Click",
+  "description": "It sneak preview the link by mouse hovering and show key facts using OpenAI GPT model.",
+  "version": "0.0",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "debugger"
+  ],
+  "host_permissions": [
+    "https://*/*"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "dist/index.js"
+      ],
+      "matches": [
+        "https://developer.chrome.com/*",
+        "https://github.com/*"
+      ]
+    }
+  ]
+}

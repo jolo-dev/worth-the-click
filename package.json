@@ -1,0 +1,28 @@
+{
+  "name": "hello-world",
+  "module": "src/index.tsx",
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "@types/bun": "latest",
+    "chrome-types": "^0.1.253",
+    "preact": "^10.19.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "bun build src/index.ts --outfile dist/index.js --watch --outdir dist & bun build src/options.ts --watch --outfile dist/options.js --outdir dist & bun build src/popup.ts --watch --outfile dist/popup.js --outdir dist",
+    "check": "biome check --apply .",
+    "check:unsafe": "biome check --apply-unsafe ."
+  },
+  "type": "module",
+  "dependencies": {
+    "@langchain/openai": "^0.0.14",
+    "ai": "^2.2.32",
+    "cheerio": "^1.0.0-rc.12",
+    "langchain": "^0.1.12",
+    "openai": "^4.26.0",
+    "vanjs-core": "^1.2.8",
+    "vanjs-ui": "^0.10.0"
+  }
+}

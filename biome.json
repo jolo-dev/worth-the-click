@@ -1,0 +1,26 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true
+		}
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"javascript": {
+		"formatter": {
+			"quoteStyle": "single",
+			"indentStyle": "space",
+			"indentWidth": 2,
+			"jsxQuoteStyle": "single"
+		}
+	},
+	"files": {
+		"include": ["src/**/*.ts", "src/**/*.tsx"]
+	}
+}
