@@ -11,17 +11,20 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "dev": "bun build src/index.ts --outfile dist/index.js --watch --outdir dist & bun build src/options.ts --watch --outfile dist/options.js --outdir dist & bun build src/popup.ts --watch --outfile dist/popup.js --outdir dist",
+    "dev": "bun run --watch build.ts",
+    "build": "bun run build.ts",
     "check": "biome check --apply .",
     "check:unsafe": "biome check --apply-unsafe ."
   },
   "type": "module",
   "dependencies": {
     "@langchain/openai": "^0.0.14",
+    "abstract-syntax-tree": "^2.21.1",
     "ai": "^2.2.32",
     "cheerio": "^1.0.0-rc.12",
     "langchain": "^0.1.12",
     "openai": "^4.26.0",
+    "ts-morph": "^21.0.1",
     "vanjs-core": "^1.2.8",
     "vanjs-ui": "^0.10.0"
   }

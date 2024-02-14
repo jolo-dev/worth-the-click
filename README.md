@@ -22,3 +22,7 @@ bun dev
 ```
 
 The output file will be put inside `dist` as `index.js`. Use that to install it.
+
+### Load an unpacked extension
+
+In development, you need to add this extension. Please, check out [this tutorial](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
