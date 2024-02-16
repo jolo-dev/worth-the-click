@@ -14,6 +14,8 @@ import { Project, SyntaxKind } from 'ts-morph';
  * - The parent class declaration does not have a name
  */
 function hoistClassUptoFirstUsage(targetClassName: string) {
+  console.log(`Hoisting ${targetClassName} to its first usage`);
+
   // Start Ts-morph
   const project = new Project();
   const file = project.addSourceFileAtPath('out/index.ts');
@@ -48,6 +50,8 @@ function hoistClassUptoFirstUsage(targetClassName: string) {
 }
 
 export async function build() {
+  console.log('Building');
+
   await Bun.build({
     entrypoints: ['./src/index.ts'],
     outdir: './out',
@@ -57,8 +61,11 @@ export async function build() {
   hoistClassUptoFirstUsage('BasePromptTemplate');
   hoistClassUptoFirstUsage('BaseChain');
 
+  const result = await Bun.file('out/index.ts').text();
+  await Bun.write('dist/index.js', result);
+
   await Bun.build({
-    entrypoints: ['./out/index.ts', './src/popup.ts'],
+    entrypoints: ['./src/popup.ts'],
     outdir: './dist',
     naming: '[name].[ext]',
   });
