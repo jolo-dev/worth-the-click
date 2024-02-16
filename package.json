@@ -11,8 +11,8 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "dev": "bun run --watch build.ts",
-    "build": "bun run build.ts",
+    "dev": "bun run build && bun run --watch scripts/watch.ts",
+    "build": "bun run scripts/build.ts",
     "check": "biome check --apply .",
     "check:unsafe": "biome check --apply-unsafe ."
   },

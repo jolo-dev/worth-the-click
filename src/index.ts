@@ -25,7 +25,7 @@ for (const link of links) {
         const summary = await getSummary(externalSite);
         if (
           summary === undefined &&
-          summary === '<b>Probably, too big to fetch </b>'
+          summary === '<b>Probably, too big to fetch</b>'
         )
           return;
         await readFromStream(summary as ReadableStream, link.href);

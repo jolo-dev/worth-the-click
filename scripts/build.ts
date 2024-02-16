@@ -1,21 +1,6 @@
 import Bun, { $ } from 'bun';
 import { Project, SyntaxKind } from 'ts-morph';
 
-// First step to bundle all the files
-const foo = await Bun.build({
-  entrypoints: ['./src/index.ts'],
-  outdir: './out',
-});
-
-// Ts-morph only understands TypeScript files,
-// so we need to convert the output file to a TypeScript file
-const oldFile = Bun.file(foo.outputs[0].path);
-await Bun.write('out/index.ts', oldFile);
-
-// Start Ts-morph
-const project = new Project();
-const file = project.addSourceFileAtPath('out/index.ts');
-
 /**
  * The function hoistClassUptoFirstUsage moves a target class to the first usage within its parent
  * class.
@@ -29,6 +14,9 @@ const file = project.addSourceFileAtPath('out/index.ts');
  * - The parent class declaration does not have a name
  */
 function hoistClassUptoFirstUsage(targetClassName: string) {
+  // Start Ts-morph
+  const project = new Project();
+  const file = project.addSourceFileAtPath('out/index.ts');
   const targetClass = file.getClass(targetClassName);
   if (!targetClass) return;
 
@@ -38,32 +26,45 @@ function hoistClassUptoFirstUsage(targetClassName: string) {
   if (references.length === 0 || !targetClassText) return;
 
   const firstUsage = references[0];
-  const parentClassDeclaration = firstUsage.getFirstAncestorByKind(
+  const firstReferenceUsage = firstUsage.getFirstAncestorByKind(
     SyntaxKind.ClassDeclaration,
   );
 
-  if (!parentClassDeclaration) return;
+  if (!firstReferenceUsage) return;
 
-  const parentClassName = parentClassDeclaration.getName();
-  if (!parentClassName) return;
+  const firstReferenceUsageClassName = firstReferenceUsage.getName();
+  if (!firstReferenceUsageClassName) return;
 
-  const parentClass = file.getClass(parentClassName);
-  if (!parentClass) return;
+  const firstReferenceClass = file.getClass(firstReferenceUsageClassName);
+  if (!firstReferenceClass) return;
 
-  const parentClassText = parentClass.getText();
-  parentClass.replaceWithText(`${targetClassText}\n${parentClassText}`);
+  const firstReferenceClassDeclaration = firstReferenceClass.getText();
+  firstReferenceClass.replaceWithText(
+    `${targetClassText}\n${firstReferenceClassDeclaration}`,
+  );
 
   targetClass.remove();
   file.saveSync();
 }
 
-hoistClassUptoFirstUsage('BasePromptTemplate');
-hoistClassUptoFirstUsage('BaseChain');
+export async function build() {
+  await Bun.build({
+    entrypoints: ['./src/index.ts'],
+    outdir: './out',
+    naming: '[name].ts',
+  });
 
-const result = await Bun.build({
-  entrypoints: ['./out/index.ts', './src/popup.ts'],
-  outdir: './dist',
-  naming: '[name].[ext]',
-});
+  hoistClassUptoFirstUsage('BasePromptTemplate');
+  hoistClassUptoFirstUsage('BaseChain');
 
-await $`rm -rf out`;
+  await Bun.build({
+    entrypoints: ['./out/index.ts', './src/popup.ts'],
+    outdir: './dist',
+    naming: '[name].[ext]',
+  });
+
+  const remove = await $`rm -rf out`;
+  console.log(remove.exitCode === 0 ? 'Bundled sucessfully' : remove.stderr);
+}
+
+build();
