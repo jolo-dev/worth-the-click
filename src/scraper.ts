@@ -1,15 +1,18 @@
 import * as cheerio from 'cheerio';
 
 export async function getPage(link: string) {
-  console.log('Start scraping and fetching', link);
+  console.log('Start scraping and fetching', JSON.stringify({ link }));
   try {
-    const response = await fetch(link, {
+    const response = await fetch('http://localhost:3000', {
+      method: 'POST',
+      body: JSON.stringify({ link }),
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
       },
-      mode: 'no-cors',
     });
-    if (response.ok) {
+    console.log('Response', response);
+
+    if (response.status === 200) {
       const html = await response.text();
       return html;
     }

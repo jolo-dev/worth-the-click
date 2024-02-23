@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "bun run build && bun run --watch scripts/watch.ts",
     "build": "bun run scripts/build.ts",
+    "server": "bun run --watch scripts/server.ts",
     "check": "biome check --apply .",
     "check:unsafe": "biome check --apply-unsafe ."
   },
