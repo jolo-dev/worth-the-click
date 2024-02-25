@@ -1,21 +1,16 @@
 {
   "name": "hello-world",
-  "module": "src/index.tsx",
-  "devDependencies": {
-    "@biomejs/biome": "1.5.3",
-    "@types/bun": "latest",
-    "chrome-types": "^0.1.253",
-    "preact": "^10.19.3"
-  },
+  "module": "src/index.ts",
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "scripts": {
     "dev": "bun run build && bun run --watch scripts/watch.ts",
     "build": "bun run scripts/build.ts",
-    "server": "bun run --watch scripts/server.ts",
+    "server": "wrangler dev scripts/server.ts",
     "check": "biome check --apply .",
-    "check:unsafe": "biome check --apply-unsafe ."
+    "check:unsafe": "biome check --apply-unsafe .",
+    "deploy": "wrangler deploy --minify src/index.ts"
   },
   "type": "module",
   "dependencies": {
@@ -23,10 +18,19 @@
     "abstract-syntax-tree": "^2.21.1",
     "ai": "^2.2.32",
     "cheerio": "^1.0.0-rc.12",
+    "hono": "^4.0.7",
     "langchain": "^0.1.12",
     "openai": "^4.26.0",
     "ts-morph": "^21.0.1",
     "vanjs-core": "^1.2.8",
     "vanjs-ui": "^0.10.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.5.3",
+    "@types/bun": "latest",
+    "chrome-types": "^0.1.253",
+    "preact": "^10.19.3",
+    "@cloudflare/workers-types": "^4.20240208.0",
+    "wrangler": "^3.25.0"
   }
 }

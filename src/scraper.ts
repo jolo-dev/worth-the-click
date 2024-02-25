@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 export async function getPage(link: string) {
   console.log('Start scraping and fetching', JSON.stringify({ link }));
   try {
-    const response = await fetch('http://localhost:3000', {
+    const response = await fetch('http://localhost:8787', {
       method: 'POST',
       body: JSON.stringify({ link }),
       headers: {

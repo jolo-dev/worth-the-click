@@ -21,7 +21,8 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "chrome-types"
+      "chrome-types",
+      "@cloudflare/workers-types"
     ],
     /* Preact */
     "baseUrl": "./",
