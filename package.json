@@ -5,7 +5,7 @@
     "typescript": "^5.0.0"
   },
   "scripts": {
-    "dev": "bun run build && bun run --watch scripts/watch.ts",
+    "dev": "bun run build && bun run --watch scripts/watch.ts & bun run server",
     "build": "bun run scripts/build.ts",
     "server": "wrangler dev scripts/server.ts",
     "check": "biome check --apply .",
