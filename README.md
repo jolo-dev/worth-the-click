@@ -42,12 +42,15 @@ The output file will be put inside `dist` as `index.js`. Use that to install it.
 In development, you need to add this extension.
 Please, check out [this tutorial](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
 
-## Blogs
+## Todos
 
-I write a (hopefully) comprehensive series about this repository.
+I wrote a (hopefully) comprehensive series about this repository.
 
-- [Part 1](https://dev.to/jolodev/developing-your-own-chrome-extension-the-theory-part-1-2d93)
-- [Part 2](https://dev.to/jolodev/developing-your-own-chrome-extension-in-bun-and-typescript-part-2-50h7)
-- [Part 3](https://dev.to/jolodev/developing-your-own-chrome-extension-with-openai-and-langchain-part-3-4nbl)
-- [Part 4](https://dev.to/jolodev/developing-your-own-chrome-extension-fixing-errors-with-ts-morph-and-using-buns-api-part-4-3hni)
-- [Part 5](https://dev.to/jolodev/developing-your-own-chrome-extension-fetch-with-a-proxy-and-cloudflare-workers-part-5-95j)
+- [x] [Structure and manifest.json](https://dev.to/jolodev/developing-your-own-chrome-extension-the-theory-part-1-2d93)
+- [x] [Add development environment with Bun and Typescript](https://dev.to/jolodev/developing-your-own-chrome-extension-in-bun-and-typescript-part-2-50h7)
+- [x] [Add Streaming and Summarizer with LangChain and OpenAI](https://dev.to/jolodev/developing-your-own-chrome-extension-with-openai-and-langchain-part-3-4nbl)
+- [x] [Hoisting Code before Initialization with ts-morph](https://dev.to/jolodev/developing-your-own-chrome-extension-fixing-errors-with-ts-morph-and-using-buns-api-part-4-3hni)
+- [x] [Add a Proxy Server with Miniflare and Cloudflare Workers](https://dev.to/jolodev/developing-your-own-chrome-extension-fetch-with-a-proxy-and-cloudflare-workers-part-5-95j)
+- [ ] Add authentication (with [Lucia](https://lucia-auth.com/)?)
+- [ ] Add more Styling
+- [ ] Publish to Google Web store with GitHub actions
