@@ -33,7 +33,7 @@ setTimeout(() => {
             return;
           await readFromStream(summary as ReadableStream, link.href);
         }
-      }); // Adjust the time (in milliseconds) as needed
+      }, 3000); // Adjust the time (in milliseconds) as needed
 
       link.addEventListener('mouseleave', () => {
         // Clear the timer if the mouse leaves the link before the specified time

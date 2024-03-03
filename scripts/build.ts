@@ -1,6 +1,5 @@
 import Bun, { $ } from 'bun';
 import { Project, SyntaxKind } from 'ts-morph';
-import { server } from './server';
 
 /**
  * The function hoistClassUptoFirstUsage moves a target class to the first usage within its parent

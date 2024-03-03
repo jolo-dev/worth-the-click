@@ -2,6 +2,8 @@
 
 A Chrome extension which uses the Power of [OpenAI](https://openai.com/) and [Langchain](https://js.langchain.com/docs/get_started/introduction) to summarize an external link when hovering over it.
 
+![Worth the Click](./images/worth-the-click.gif)
+
 ## Idea
 
 ![Idea of the workflow](./images/Idea.png)
