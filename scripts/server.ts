@@ -1,33 +1,28 @@
-export default {
-  async fetch(req: Request) {
-    if (req.method === 'POST') {
-      const link: { link: string } = await req.json();
+import { Hono } from 'hono';
+import { bearerAuth } from 'hono/bearer-auth';
+import { cors } from 'hono/cors';
 
-      const foo = await fetch(link.link);
-      const bar = await foo.text();
+const app = new Hono();
 
-      const res = new Response(bar, {
-        status: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Allow requests from all origins
-          'Access-Control-Allow-Methods': 'POST', // Specify allowed methods
-          'Access-Control-Allow-Headers': 'Content-Type', // Specify allowed headers
-        },
-      });
-      console.log('In Server', res);
+app.use('/', cors());
+const token = 'honoiscool';
 
-      return res;
-    }
-    if (req.method === 'OPTIONS') {
-      console.log('Option request');
-      return new Response(null, {
-        status: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*', // Allow requests from all origins
-          'Access-Control-Allow-Methods': 'GET, POST', // Specify allowed methods
-          'Access-Control-Allow-Headers': 'Content-Type', // Specify allowed headers
-        },
-      });
-    }
-  },
+const headers = {
+  'Access-Control-Allow-Origin': '*', // Allow requests from all origins
+  'Access-Control-Allow-Methods': 'POST', // Specify allowed methods
+  'Access-Control-Allow-Headers': 'Content-Type', // Specify allowed headers
 };
+
+app.post('/', bearerAuth({ token }), async (c) => {
+  const link: { link: string } = await c.req.json();
+
+  const foo = await fetch(link.link);
+  const bar = await foo.text();
+
+  return new Response(bar, {
+    status: 200,
+    headers,
+  });
+});
+
+export default app;

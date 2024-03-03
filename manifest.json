@@ -35,7 +35,8 @@
       "matches": [
         "https://developer.chrome.com/*",
         "https://github.com/*",
-        "https://medium.com/*"
+        "https://medium.com/*",
+        "https://mail.google.com/*"
       ]
     }
   ]

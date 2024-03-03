@@ -8,6 +8,7 @@ export async function getPage(link: string) {
       body: JSON.stringify({ link }),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer honoiscool',
       },
     });
     console.log('Response', response);
