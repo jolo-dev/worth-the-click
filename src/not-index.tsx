@@ -1,4 +1,4 @@
-import React, { render } from 'preact';
+import { render } from 'preact';
 import Tooltip from './Tooltip.tsx';
 
 const links = Array.from(document.querySelectorAll('a')).filter((link) =>

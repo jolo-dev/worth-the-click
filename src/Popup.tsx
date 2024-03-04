@@ -1,5 +1,3 @@
-import * as React from 'preact';
-
 export default function Popup() {
 
     const saveOpenAi = () => {

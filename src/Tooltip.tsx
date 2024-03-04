@@ -1,8 +1,8 @@
-import * as React from 'preact';
+import { createRef } from 'preact';
 
 export default function Tooltip(props: { link: HTMLAnchorElement }) {
   console.log('Tooltip', props.link.href);
-  const tooltip = React.createRef();
+  const tooltip = createRef();
   createTooltipSkeleton();
   function onMouseMove(event: MouseEvent) {
     console.log('onMouseMove');
