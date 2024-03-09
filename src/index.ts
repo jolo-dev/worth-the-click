@@ -1,6 +1,6 @@
 import { getSummary, readFromStream } from './openai.ts';
 import { getPageContent } from './scraper.ts';
-import { createTooltip } from './tooltip.ts';
+import { createTooltip } from './tooltip/tooltip.ts';
 
 setTimeout(() => {
   const links = Array.from(document.querySelectorAll('a')).filter((link) =>

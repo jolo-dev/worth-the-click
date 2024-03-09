@@ -4,6 +4,7 @@ export default function Popup() {
 
     const saveOpenAi = () => {
         const openaiApiKey = document.querySelector<HTMLInputElement>('input[name="openai-api"]')?.value;
+        //@ts-ignore
         chrome.storage.sync.set({ openaiApiKey }, () => {
             console.log('Value is set to ', openaiApiKey);
         });

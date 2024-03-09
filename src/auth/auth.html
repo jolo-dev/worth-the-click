@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Login Button</title>
+    <!-- Include the Google Sign-In API script -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+
+<body>
+    <!-- Google Sign-In button container -->
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- Script to handle sign-in success -->
+    <script>
+        function onSignIn ( googleUser ) {
+            var profile = googleUser.getBasicProfile();
+            console.log( 'ID: ' + profile.getId() ); // Do something with the user's ID
+            console.log( 'Name: ' + profile.getName() ); // Do something with the user's name
+            console.log( 'Email: ' + profile.getEmail() ); // Do something with the user's email
+        }
+    </script>
+</body>
+
+</html>

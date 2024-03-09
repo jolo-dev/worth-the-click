@@ -12,7 +12,7 @@ compatibility_date = "2023-12-01"
 # binding = "MY_BUCKET"
 # bucket_name = "my-bucket"
 
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "my-database"
-# database_id = ""
+[[d1_databases]]
+binding = "DB"
+database_name = "users-for-worth-a-click"
+database_id = "3a22fa05-9dfb-4319-9f88-ae060ee43d5a"
